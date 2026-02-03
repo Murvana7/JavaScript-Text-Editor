@@ -135,4 +135,3 @@ themeToggle?.addEventListener("click", () => {
 // call this inside initializer or on load
 initTheme();
 
-
