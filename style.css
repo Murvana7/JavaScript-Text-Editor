@@ -12,8 +12,8 @@
  
  .container{
     background-color: #fff;
-    width: 90vmin;
-    padding: 50px 30px;
+    width: min(900px, 92vw);
+    padding: 24px;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -23,6 +23,8 @@
 }
 
 .options{
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,.08);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -96,3 +98,10 @@ input[type="color"]::-moz-color-swatch{
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
 }
+button:hover{
+  background:#f3f6ff;
+}
+button:active{
+  transform: scale(0.96);
+}
+
