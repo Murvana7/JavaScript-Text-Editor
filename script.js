@@ -91,3 +91,17 @@ const highlighterRemover = (buttons) => {
 };
 
 window.onload = initializer;
+writingArea.addEventListener("keyup", updateActiveStates);
+writingArea.addEventListener("mouseup", updateActiveStates);
+
+function updateActiveStates(){
+  const cmds = ["bold","superscript","subscript","justifyLeft","justifyCenter","justifyRight","justifyFull"];
+  cmds.forEach(cmd=>{
+    const btn = document.getElementById(cmd);
+    if(!btn) return;
+    try{
+      document.queryCommandState(cmd) ? btn.classList.add("active") : btn.classList.remove("active");
+    }catch(e){}
+  });
+}
+
