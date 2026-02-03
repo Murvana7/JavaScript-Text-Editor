@@ -49,10 +49,11 @@ select{
     cursor: pointer;
 }
 
-.options label
+.options label,
 .options select{
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
+
 
 input[type="color"]{
     -webkit-appearance: none;
@@ -84,4 +85,14 @@ input[type="color"]::-moz-color-swatch{
 
 .active{
     background-color: #e0e9ff;
+}
+#text-input:empty:before{
+  content: "Start typing here...";
+  color: #999;
+}
+#text-input{
+  padding: 20px;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
 }
