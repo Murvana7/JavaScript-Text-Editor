@@ -5,13 +5,40 @@
     margin: 0;
     box-sizing: border-box;
  }
+:root{
+  --bg: #338cf4;
+  --panel: #ffffff;
+  --text: #020929;
+  --muted: #5b6070;
+  --border: #d9d9d9;
+  --shadow: rgba(7,20,35,0.2);
+  --btn-bg: #ffffff;
+  --btn-hover: #f3f6ff;
+  --active: #e0e9ff;
+  --editor-bg: #ffffff;
+}
+
+body.dark{
+  --bg: #0b1220;
+  --panel: rgba(255,255,255,0.06);
+  --text: #eaf0ff;
+  --muted: rgba(234,240,255,.75);
+  --border: rgba(255,255,255,0.12);
+  --shadow: rgba(0,0,0,0.45);
+  --btn-bg: rgba(255,255,255,0.06);
+  --btn-hover: rgba(255,255,255,0.10);
+  --active: rgba(56,189,248,0.18);
+  --editor-bg: rgba(255,255,255,0.04);
+}
 
  body{
-    background-color: #338cf4;
+    background-color: var(--bg);
+  color: var(--text);
  }
  
  .container{
-    background-color: #fff;
+    background-color: var(--panel);
+    box-shadow: 0 25px 50px var(--shadow);
     width: min(900px, 92vw);
     padding: 24px;
     position: absolute;
@@ -19,8 +46,7 @@
     left: 50%;
     top: 50%;
     border-radius: 10px;
-    box-shadow: 0 25px 50px rgba(7,20,35,0.2);
-}
+ }
 
 .options{
     padding-bottom: 12px;
@@ -38,15 +64,17 @@ button{
     place-items: center;
     border-radius: 3px;
     border: none;
-    background-color: #fff;
+    background-color: var(--btn-bg);
+    color: var(--text);
     outline: none;
-    color: #020929;
     cursor: pointer;
 }
 
 select{
     padding: 7px;
-    border: 1px solid #020929;
+    border: 1px solid var(--border);
+    background: var(--btn-bg);
+    color: var(--text);
     border-radius: 3px;
     cursor: pointer;
 }
@@ -59,7 +87,7 @@ select{
 
 input[type="color"]{
     -webkit-appearance: none;
-    -moz-appareance: none;  
+    -moz-appearance: none; /* fix */
     appearance: none;
     background-color: transparent;
     width: 40px;
@@ -79,14 +107,21 @@ input[type="color"]::-moz-color-swatch{
 }
 
 #text-input{
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    paddoing: 20px;
-    height: 50vh;
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  padding: 20px; /* fix your typo */
+  height: 50vh;
+  background: var(--editor-bg);
+  color: var(--text);
+  outline: none;
+  line-height: 1.6;
 }
-
+#text-input:empty:before{
+  content: "Start typing here...";
+  color: var(--muted);
+}
 .active{
-    background-color: #e0e9ff;
+  background-color: var(--active);
 }
 #text-input:empty:before{
   content: "Start typing here...";
@@ -99,9 +134,10 @@ input[type="color"]::-moz-color-swatch{
   line-height: 1.6;
 }
 button:hover{
-  background:#f3f6ff;
+  background-color: var(--btn-hover);
 }
 button:active{
   transform: scale(0.96);
 }
+
 
