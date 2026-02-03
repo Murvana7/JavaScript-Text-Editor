@@ -104,4 +104,35 @@ function updateActiveStates(){
     }catch(e){}
   });
 }
+const themeToggle = document.getElementById("themeToggle");
+
+function applyTheme(theme) {
+  document.body.classList.toggle("dark", theme === "dark");
+  localStorage.setItem("theme", theme);
+
+  // swap icon
+  const icon = themeToggle?.querySelector("i");
+  if (icon) {
+    icon.classList.remove("fa-moon", "fa-sun");
+    icon.classList.add(theme === "dark" ? "fa-sun" : "fa-moon");
+  }
+}
+
+function initTheme() {
+  const saved = localStorage.getItem("theme");
+  if (saved) return applyTheme(saved);
+
+  // first visit: use system preference
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(prefersDark ? "dark" : "light");
+}
+
+themeToggle?.addEventListener("click", () => {
+  const isDark = document.body.classList.contains("dark");
+  applyTheme(isDark ? "light" : "dark");
+});
+
+// call this inside initializer or on load
+initTheme();
+
 
